@@ -17,3 +17,5 @@ api_yamdb-master-src/.idea
 media/
 
 db.sqlite3
+/api_yamdb/.env
+

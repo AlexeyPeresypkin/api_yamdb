@@ -18,12 +18,14 @@ from django.views.generic import TemplateView
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(
-    r'titles/(?P<title_id>\d+)/reviews',
-                ReviewViewSet,
-                basename='reviews'
-)
+# router.register(
+#     r'titles/(?P<title_id>\d+)/reviews',
+#                 ReviewViewSet,
+#                 basename='reviews',
+# )
 
 urlpatterns = [
+    path('api-auth/', include('rest_framework.urls')),
+    path('', include(router.urls))
 
 ]
