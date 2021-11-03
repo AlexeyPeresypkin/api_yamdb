@@ -14,18 +14,32 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path, include
-from django.views.generic import TemplateView
 from rest_framework.routers import DefaultRouter
 
+from api.views import (
+    ReviewViewSet,
+    CommentViewSet,
+    CategoryViewSet,
+    GenreViewSet,
+    TitleViewSet
+)
+
 router = DefaultRouter()
-# router.register(
-#     r'titles/(?P<title_id>\d+)/reviews',
-#                 ReviewViewSet,
-#                 basename='reviews',
-# )
+router.register(
+    r'titles/(?P<title_id>\d+)/reviews',
+    ReviewViewSet,
+    basename='review',
+)
+router.register(
+    r'titles/(?P<title_id>\d+)/reviews/(?P<review_id>\d+)/comments',
+    CommentViewSet,
+    basename='comment',
+)
+router.register('categories', CategoryViewSet)
+router.register('genres', GenreViewSet)
+router.register('titles', TitleViewSet)
 
 urlpatterns = [
-    path('api-auth/', include('rest_framework.urls')),
     path('', include(router.urls))
 
 ]

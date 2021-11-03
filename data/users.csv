@@ -1,6 +1,6 @@
-id,username,email,role,description,first_name,last_name
-100,bingobongo,bingobongo@yamdb.fake,user,,,bingo
-101,capt_obvious,capt_obvious@yamdb.fake,admin,,,capt
-102,faust,faust@yamdb.fake,user,,,faust
-103,reviewer,reviewer@yamdb.fake,user,,,reviewer
-104,angry,angry@yamdb.fake,moderator,,,angry
+id,username,email,role,description,is_staff,last_name,password,is_superuser,is_active,date_joined,confirmation_code,first_name
+100,bingobongo,bingobongo@yamdb.fake,user,"",0,bingo,124,0,1,2021-10-31 18:00:39.357633,35afe79a24de41d4b58a21f79e21800a,user
+101,capt_obvious,capt_obvious@yamdb.fake,admin,"",0,capt,124,0,1,2021-10-31 18:00:39.357633,27da71be14fa4e6a9ff74dc81924d4b6,admin
+102,faust,faust@yamdb.fake,user,"",0,faust,124,0,1,2021-10-31 18:00:39.357633,5bbde65f1d71406abed3bc0e1f4e432b,user
+103,reviewer,reviewer@yamdb.fake,user,"",0,reviewer,124,0,1,2021-10-31 18:00:39.357633,c9517728b62043eaa3ab602aa653972b,user
+104,angry,angry@yamdb.fake,moderator,"",0,angry,124,0,1,2021-10-31 18:00:39.357633,d51fa064cb9c4ee6a980c578e5df8811,moderator

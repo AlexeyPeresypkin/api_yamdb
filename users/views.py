@@ -20,8 +20,9 @@ from users.permissions import IsAdministrator
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    # permission_classes = (IsAdministrator,)
-    filter_backends = [DjangoFilterBackend, ]
+    permission_classes = (IsAdministrator,)
+    # filter_backends = [DjangoFilterBackend, ]
+    filter_backends = [filters.SearchFilter, ]
     search_fields = ['username', ]
 
     @action(
