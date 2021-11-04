@@ -1,26 +1,64 @@
 from django.contrib import admin
 
-# Register your models here.
-from api.models import Review, Title, Genre, Comments, Category
+from api.models import Category, Comments, Genre, Review, Title
 
 
-class ReviewAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'text')
-
-
+@admin.register(Title)
 class TitleAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'category',)
+    list_display = (
+        'id',
+        'category',
+        'name',
+        'year',
+        'description',
+    )
+    empty_value_display = '-empty-'
 
 
-class CommentsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'text')
-
-
+@admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'text')
+    list_display = (
+        'id',
+        'name',
+        'slug',
+    )
+    empty_value_display = '-empty-'
 
 
-admin.site.register(Review, ReviewAdmin)
-admin.site.register(Title, TitleAdmin)
-admin.site.register(Comments)
-admin.site.register(Category)
+@admin.register(Genre)
+class GenreAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'name',
+        'slug',
+    )
+    empty_value_display = '-empty-'
+
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'text',
+        'author',
+        'score',
+        'pub_date',
+        'title_id',
+    )
+
+    empty_value_display = '-empty-'
+
+
+@admin.register(Comments)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'text',
+        'author',
+        'pub_date',
+        'review'
+    )
+    fields = ('text', 'review', 'author', 'pub_date')
+    empty_value_display = '-empty-'
+    readonly_fields = 'author', 'review', 'pub_date'
+

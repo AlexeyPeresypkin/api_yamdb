@@ -12,4 +12,3 @@ def my_year_validator(value):
         )
 
 
-print(datetime.now().year)

@@ -1,8 +1,6 @@
 import uuid
 
 from django.core.mail import send_mail
-from django.shortcuts import get_object_or_404
-from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -22,6 +20,7 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     permission_classes = (IsAdministrator,)
     # filter_backends = [DjangoFilterBackend, ]
+    lookup_field = 'username'
     filter_backends = [filters.SearchFilter, ]
     search_fields = ['username', ]
 

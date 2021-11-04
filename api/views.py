@@ -39,7 +39,7 @@ class CommentViewSet(ModelViewSet):
         title_id = self.kwargs.get('title_id')
         review_id = self.kwargs.get('review_id')
         title = get_object_or_404(Title, pk=title_id)
-        review = get_object_or_404(Review, pk=review_id, title=title)
+        review = get_object_or_404(Review, pk=review_id, title=title_id)
         queryset = review.comments.all()
         return queryset
 
@@ -50,20 +50,22 @@ class CommentViewSet(ModelViewSet):
 
 
 class CategoryViewSet(ModelViewSet):
-    serializer_class = CategorySerializer
-    permission_classes = [IsAdminOrReadOnly, permissions.IsAuthenticatedOrReadOnly]
-    # filter_backends = [filters.SearchFilter]
-    # filterset_fields = ['name', ]
     queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly,
+                          IsAdminOrReadOnly]
     lookup_field = 'slug'
     filter_backends = [filters.SearchFilter]
     search_fields = ['name']
 
 
 class GenreViewSet(ModelViewSet):
-    serializer_class = GenreSerializer
-    permission_classes = [IsAdminOrReadOnly, permissions.IsAuthenticatedOrReadOnly]
     queryset = Genre.objects.all()
+    serializer_class = GenreSerializer
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly,
+        IsAdminOrReadOnly
+    ]
     lookup_field = 'slug'
     filter_backends = [filters.SearchFilter]
     search_fields = ['name']

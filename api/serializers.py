@@ -6,8 +6,7 @@ from .models import Genre, Title, Category, Review, Comments
 
 
 class ReviewSerializer(serializers.ModelSerializer):
-    author = serializers.CharField(read_only=True)
-    # title = serializers.CharField(read_only=True)
+    author = serializers.CharField(read_only=True, source='author.username')
 
     class Meta:
         model = Review
@@ -28,7 +27,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 class CommentsSerializer(serializers.ModelSerializer):
     review = serializers.CharField(read_only=True, source='review.title')
-    author = serializers.CharField(read_only=True)
+    author = serializers.SlugRelatedField(read_only=True, slug_field='username')
 
     class Meta:
         model = Comments
