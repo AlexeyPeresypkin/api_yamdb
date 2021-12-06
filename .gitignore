@@ -1,6 +1,7 @@
 .git/*
 ../env/
 venv/
+.env
 
 __pycache__/
 *.py[cod]
@@ -19,3 +20,4 @@ media/
 db.sqlite3
 /api_yamdb/.env
 
+/static/
