@@ -36,15 +36,14 @@ DB_PORT=5432
 docker-compose up
 после запуска контейнеров входим в командую строку веб приложения
 docker exec -it <CONTAINER ID> bash
-./manage.py makemigrations API_team
-docker-compose exec web python manage.py migrate --noinput
-docker-compose exec web python manage.py loaddata fixtures.json
-docker-compose exec web python manage.py createsuperuser
-docker-compose exec web python manage.py collectstatic --no-input
+./manage.py makemigrations
+./manage.py migrate
+./manage.py loaddata fixtures.json
+./manage.py collectstatic
+./manage.py createsuperuser
 
 Последующие запуски
 docker-compose up
-
 ```
 Документацию к проекту можно посмотреть на странице `/redoc`.
 Администрирование доступно на странице `/admin`.
