@@ -2,6 +2,7 @@
 ../env/
 venv/
 .env
+.idea/
 
 __pycache__/
 *.py[cod]
@@ -23,3 +24,4 @@ db.sqlite3
 /static/
 /api/migrations/
 /users/migrations/
+/key.json
